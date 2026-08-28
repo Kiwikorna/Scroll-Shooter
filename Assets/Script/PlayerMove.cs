@@ -30,12 +30,12 @@ public class PlayerMove : MonoBehaviour,IMovable
     private  void SubmitMove()
     {
         _moveInput.performed += OnMoved;
-        _moveInput.canceled += OnStoppedMoved;
+        _moveInput.canceled += OnMoved;
     }
     private void UnSubmitMove()
     {
         _moveInput.performed -= OnMoved;
-        _moveInput.canceled -= OnStoppedMoved;
+        _moveInput.canceled -= OnMoved;
     }
     private void OnMoved(InputAction.CallbackContext obj)
     {
