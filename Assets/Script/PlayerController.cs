@@ -23,6 +23,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerMove.DestroyObject();
+        _playerMove.UnSubmitMove();
     }
 }

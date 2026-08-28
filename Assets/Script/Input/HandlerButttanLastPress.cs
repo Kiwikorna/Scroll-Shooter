@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,17 +21,15 @@ public class HandlerButttanLastPress : InputBindingComposite<Vector2>
 
     public override Vector2 ReadValue(ref InputBindingCompositeContext context)
     {
+        
         float upPress = context.ReadValue<float>(up);
         float downPress = -context.ReadValue<float>(down);
         float rightPress = context.ReadValue<float>(right);
         float leftPress = -context.ReadValue<float>(left);
-        Debug.Log(downPress);
-        if (rightPress > 0)
-        {
-            
-        }
-        var lastXPress = EvalutePress(leftPress,rightPress,_prevLeftPress,_prevRightPress);
-        var lastYPress = EvalutePress(downPress,upPress,_prevDownPress,_prevUpPress);
+        
+        
+        var lastXPress = CalculatePress(leftPress,rightPress,_prevLeftPress,_prevRightPress);
+        var lastYPress = CalculatePress(downPress,upPress,_prevDownPress,_prevUpPress);
         
         _prevUpPress = upPress;
         _prevDownPress = downPress;
@@ -46,7 +45,7 @@ public class HandlerButttanLastPress : InputBindingComposite<Vector2>
 
     }
 
-    private float EvalutePress(float negativePress, float positivePress, float previousNegativePress,
+    private float CalculatePress(float negativePress, float positivePress, float previousNegativePress,
         float previousPositivePress)
     {
         var winner = 0.0f;
