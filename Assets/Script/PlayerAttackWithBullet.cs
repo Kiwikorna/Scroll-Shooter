@@ -12,11 +12,14 @@ namespace AttackComponent
         {
             
         }*/
+        // ReSharper disable Unity.PerformanceAnalysis
         public void Attack()
         {
-            var instance = bulletController.GetBullet();
+            var bulletInstantiatedBefore = bulletController.GetBullet();
             var position = spawnPositionForAttackPrefab.position;
-            Instantiate(instance,position,Quaternion.identity);
+            var bulletInstantiation = Instantiate(bulletInstantiatedBefore,position,Quaternion.identity);
+            
+            bulletInstantiation.transform.SetParent(spawnPositionForAttackPrefab);
         }
         public bool IsAttacking()
         {
