@@ -1,4 +1,5 @@
 using AttackForObject;
+using Bullet.BulletController;
 using UnityEngine;
 
 namespace AttackComponent
