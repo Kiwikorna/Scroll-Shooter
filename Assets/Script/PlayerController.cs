@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
          
      }
 
-     public IEnumerator BulletSpawner()
+     private  IEnumerator BulletSpawner()
      {
           attackWithBulletComponent.Attack();
          yield return new WaitForSeconds(.3f);
